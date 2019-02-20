@@ -1,3 +1,9 @@
+## React app for firebase hosting
+[A Firebase in React Tutorial for Beginners [2018]](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/)
+
+
+***
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
