@@ -3,11 +3,13 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { SignUpLink } from '../SignUp'
 import { withFirebase } from '../Firebase'
+import { PasswordForgetLink } from '../PasswordForget';
 import * as ROUNTES from '../../constants/routes'
 const SignInPage = () => (
   <>
     <h1>Sign In</h1>
     <SignInForm />
+    <PasswordForgetLink />
     <SignUpLink />
   </>
 )
@@ -22,6 +24,7 @@ class SignInFormBase extends Component {
     this.state = { ...INITIAL_STATE }
   }
   onSubmit = e => {
+    e.preventDefault()
     const {email, password} = this.state
     console.log(this.state.email, this.state.password)
     this.props.firebase
@@ -33,7 +36,7 @@ class SignInFormBase extends Component {
     .catch(error=>{
       this.setState({error})
     })
-    e.preventDefault()
+    
   }
   onChange = e => {
     console.log(this.state.email, this.state.password)
