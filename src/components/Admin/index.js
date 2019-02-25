@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose'
-import { withAuthorization } from '../Session'
 import * as ROLES from '../../constants/roles'
 import { withFirebase } from '../Firebase';
-
+import { withAuthorization, withEmailVerification } from '../Session'
 class AdminPage extends Component {
   constructor(props) {
     super(props);
@@ -67,5 +66,5 @@ const UserList = ({ users }) => (
     ))}
   </ul>
 );
-const condition = authUser => authUser.roles.includes(ROLES.ADMIN)
-export default compose(withAuthorization(condition),withFirebase)(AdminPage)
+const condition = authUser => authUser && authUser.roles.includes(ROLES.ADMIN)
+export default compose(withEmailVerification,withAuthorization(condition),withFirebase)(AdminPage)

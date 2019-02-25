@@ -37,7 +37,10 @@ class SignUpFormBase extends Component {
       .user(authUser.user.uid)
       .set({username, email, roles})
     })
-    .then( () => {
+    .then(() => {
+      return this.props.firebase.doSendEmailVerification();
+    })
+    .then(() => {
       this.setState({ ...INITIAL_STATE})
       this.props.history.push(ROUNTES.HOME)
     })
