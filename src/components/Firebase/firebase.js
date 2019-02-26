@@ -13,6 +13,7 @@ class Firebase {
     constructor(){
         app.initializeApp(config)
         this.emailAuthProvider = app.auth.EmailAuthProvider;
+        this.serverValue = app.database.ServerValue;
 
         this.auth = app.auth()
         this.db = app.database()
@@ -41,6 +42,9 @@ class Firebase {
     // User API
     user = uid => this.db.ref(`users/${uid}`)
     users = ()=> this.db.ref('users')
+
+    message = uid => this.db.ref(`messages/${uid}`);
+    messages = () => this.db.ref('messages');
 
     // Merge auth and DB User API
     onAuthUserListener = (next, fallback) => 
